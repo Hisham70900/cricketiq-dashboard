@@ -1,0 +1,15 @@
+streamlit
+pandas
+plotly
+numpy
+
+After this, we'll improve the UI further by adding:
+
+🎨 Custom colors and theme
+📥 Download report as CSV
+🔍 Search player by name
+📊 Player vs Player comparison
+📈 Pie charts and scatter plots
+🏟 Venue analysis
+📋 Summary cards
+🚀 Better project structure (utils.py, charts.py, data_loader.py) like a production application.
