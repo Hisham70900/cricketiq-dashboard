@@ -2,6 +2,7 @@ streamlit
 pandas
 plotly
 numpy
+gdown
 
 After this, we'll improve the UI further by adding:
 

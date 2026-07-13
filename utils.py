@@ -1,26 +1,24 @@
+import os
 import pandas as pd
 import streamlit as st
+import gdown
+
+FILE_ID = "1prTsfh2QstiB-wxZIcn0Wtg9ULm8OCEc"
+URL = f"https://drive.google.com/uc?id={FILE_ID}"
+
+DATA_DIR = "data"
+DATA_PATH = os.path.join(DATA_DIR, "matches.csv")
 
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(
-        "data/matches.csv",
-        low_memory=False
-    )
 
+    if not os.path.exists(DATA_DIR):
+        os.makedirs(DATA_DIR)
 
-def format_number(number):
-    return f"{int(number):,}"
+    if not os.path.exists(DATA_PATH):
+        gdown.download(URL, DATA_PATH, quiet=False)
 
+    df = pd.read_csv(DATA_PATH)
 
-def calculate_strike_rate(runs, balls):
-    if balls == 0:
-        return 0
-    return round((runs / balls) * 100, 2)
-
-
-def calculate_economy(runs, balls):
-    if balls == 0:
-        return 0
-    return round((runs / balls) * 6, 2)
+    return df
