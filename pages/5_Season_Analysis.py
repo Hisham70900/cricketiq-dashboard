@@ -26,7 +26,6 @@ def load_css():
         )
 
 load_css()
-
 # =====================================
 # LOAD DATA
 # =====================================
@@ -40,34 +39,34 @@ df = load_data()
 st.title("📅 Season Analysis")
 
 st.write(
-    "Explore season-wise statistics, top batters and overall performance."
+    "Explore Season-wise statistics, top batters and overall performance."
 )
 
 st.markdown("---")
 
 # =====================================
-# SELECT SEASON
+# SELECT Season
 # =====================================
 
-seasons = sorted(df["season"].dropna().unique())
+Seasons = sorted(df["Season"].dropna().unique())
 
-selected_season = st.selectbox(
+selected_Season = st.selectbox(
     "📅 Select Season",
-    seasons
+    Seasons
 )
 
-season_df = df[df["season"] == selected_season]
+Season_df = df[df["Season"] == selected_Season]
 
 # =====================================
-# SEASON METRICS
+# Season METRICS
 # =====================================
 
-total_runs = int(season_df["runs_batter"].sum())
-total_wickets = int(season_df["bowler_wicket"].sum())
-matches = int(season_df["match_id"].nunique())
-players = int(season_df["batter"].nunique())
+total_runs = int(Season_df["runs_batter"].sum())
+total_wickets = int(Season_df["bowler_wicket"].sum())
+matches = int(Season_df["match_id"].nunique())
+players = int(Season_df["batter"].nunique())
 
-st.subheader(f"📊 {selected_season} Season Statistics")
+st.subheader(f"📊 {selected_Season} Season Statistics")
 
 c1, c2, c3, c4 = st.columns(4)
 
@@ -83,7 +82,7 @@ st.markdown("---")
 # =====================================
 
 top_batsmen = (
-    season_df.groupby("batter")["runs_batter"]
+    Season_df.groupby("batter")["runs_batter"]
     .sum()
     .sort_values(ascending=False)
     .head(10)
@@ -146,7 +145,7 @@ with left:
     st.download_button(
         "📥 Download Season Statistics",
         csv,
-        "season_statistics.csv",
+        "Season_statistics.csv",
         "text/csv"
     )
 
@@ -204,7 +203,7 @@ st.markdown("---")
 # =====================================
 
 top_bowlers = (
-    season_df.groupby("bowler")["bowler_wicket"]
+    Season_df.groupby("bowler")["bowler_wicket"]
     .sum()
     .sort_values(ascending=False)
     .head(10)

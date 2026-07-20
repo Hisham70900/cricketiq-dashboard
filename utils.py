@@ -20,5 +20,14 @@ def load_data():
         gdown.download(URL, DATA_PATH, quiet=False)
 
     df = pd.read_csv(DATA_PATH)
+    # Convert date column to datetime
+    df["date"] = pd.to_datetime(df["date"])
+
+ # Create Season column from year
+    df["Season"] = df["date"].dt.year 
+
+   
+  
+
 
     return df
