@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 from PIL import Image
 from utils import load_data
+import textwrap
 
 # =====================================
 # PAGE CONFIGURATION
@@ -20,7 +21,7 @@ st.set_page_config(
 # =====================================
 
 def load_css():
-    with open("style.css") as f:
+    with open(".streamlit/style.css") as f:
         st.markdown(
             f"<style>{f.read()}</style>",
             unsafe_allow_html=True
@@ -78,38 +79,36 @@ with col1:
     st.image(logo, width=150)
 
 with col2:
-    st.markdown(
-        """
-        <div style="padding-top:15px;">
-            <div style="
-                color:white;
-                font-size:64px;
-                font-weight:800;
-                line-height:1.1;
-            ">
+    st.html("""
+    <div style="padding-top:15px;">
+        <div style="
+            color:white;
+            font-size:64px;
+            font-weight:800;
+            line-height:1.1;
+        ">
             🏏 CricketIQ
-            </div>
-
-            <div style="
-                color:white;
-                font-size:32px;
-                font-weight:600;
-                margin-top:10px;
-            ">
-            Interactive IPL Cricket Analytics Dashboard
-            </div>
-
-            <div style="
-                color:#D9D9D9;
-                font-size:22px;
-                margin-top:12px;
-            ">
-            Built using Python • Pandas • Plotly • Streamlit
-            </div>
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+
+        <div style="
+            color:white;
+            font-size:32px;
+            font-weight:600;
+            margin-top:10px;
+        ">
+            Interactive IPL Cricket Analytics Dashboard
+        </div>
+
+        <div style="
+            color:#D9D9D9;
+            font-size:22px;
+            margin-top:12px;
+        ">
+            Built using Python • Pandas • Plotly • Streamlit
+        </div>
+    </div>
+    """)
+    
 
 # =====================================
 # DASHBOARD METRICS
